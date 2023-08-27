@@ -6,7 +6,7 @@ const { Drug } = require('../model/drug')
 getDrug.post('/getDrug', async(req, res) => {
   try {
 
-    const data = await Drug.find().exec();
+    const data = await Drug.find().sort({ id: -1 }).exec();
   
 
      res.json(data);
