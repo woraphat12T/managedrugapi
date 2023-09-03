@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
         qty:{type:String,require:true},
         qtyType:{type:String,require:true},
         pricePerQty:{type:Number,require:true},
-        stock:{type:Number,require:true},
+        stock:{type:Number,require:true},  
         status:{type:String,require:true},
     },
     {

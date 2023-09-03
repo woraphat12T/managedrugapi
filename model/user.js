@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
  const userSchema = mongoose.Schema(
     {
-        id: { type: String, required: true, unique: true },
+        id: { type: Number, required: true, unique: true },
         userName:{type:String,require:[true, "plase input name" ]},
+        fullName:{type:String,require:[true, "plase input name" ]},
         passWord:{type:String,require:true},
+        role:{type:String,require:true},
     },
     {
         timestamps:true

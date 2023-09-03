@@ -14,7 +14,7 @@ login.post('/login', async(req, res) => {
           { username: login.username },
           process.env.TOKEN_KEY, 
           { expiresIn: '16h' })
-          res.json({ token, fullname: login.userName,  } );
+          res.json({ token, fullname: login.fullName,id:login.id,role:login.role  } );
       }
   } catch (error) {
     console.log(error);

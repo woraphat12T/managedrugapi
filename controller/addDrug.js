@@ -35,8 +35,29 @@ addDrug.post('/addDrug', async(req, res) => {
     res.status(500).json({ error: 'An error occurred during user creation.' });
   }
 
-});
+})
  
- 
+addDrug.post('/updateDrug', async(req, res) => {
+  try {
+    
+    const idDrug = req.body.durgid
+    const oldStatus = req.body.status
+
+    if(oldStatus === 'close'){
+
+      var lastStatus = 'open'
+    }else{
+      var lastStatus = 'close'
+    }
+
+    await Drug.updateOne({ id: idDrug }, { $set: { status: lastStatus } })
+     res.json({ message: 'Drug Update successfully'});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'An error occurred during user creation.' });
+  }
+
+})
+
 module.exports = addDrug;
 

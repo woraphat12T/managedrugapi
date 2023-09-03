@@ -9,11 +9,13 @@ app.use(express.json())
 //authen
 const user = require('./route/user')
 const drug = require('./route/drug')
+const requisition = require('./route/requisition')
 
 
 
 app.use('/drug',user)
 app.use('/drug',drug)
+app.use('/drug',requisition)
 
 // require('./cronjob/main');
 
