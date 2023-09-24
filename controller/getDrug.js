@@ -2,7 +2,8 @@ const express = require('express');
 require('../config/connect')
 const getDrug = express.Router();
 const { Drug } = require('../model/drug')
-const { Cart,CartRec } = require('../model/cart')
+const { Cart,CartRec } = require('../model/cart');
+const { duration } = require('moment');
 
 getDrug.post('/getDrug', async(req, res) => {
   try {
@@ -45,6 +46,7 @@ getDrug.post('/getDrugSelect', async(req, res) => {
         const drugall = {
           id:data[i].id,
           nameDrug:data[i].nameDrug+' '+data[i].dose+' '+data[i].doseType,
+          qty:data[i].qty,
           qtyType:data[i].qtyType,
           stock:data[i].stock,
           status:data[i].status
@@ -86,6 +88,20 @@ getDrug.post('/getDrugSelectRec', async(req, res) => {
 
     }
      res.json(dataDrug);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'An error occurred during user creation.' });
+  }
+
+});
+
+getDrug.post('/getDrugToEdit', async(req, res) => {
+  try {
+
+    const drugId = req.body.drugId
+    
+    const data = await Drug.find({id:drugId}).exec();
+     res.json(data);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'An error occurred during user creation.' });

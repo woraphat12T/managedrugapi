@@ -59,5 +59,20 @@ addDrug.post('/updateDrug', async(req, res) => {
 
 })
 
+
+addDrug.post('/updateDrugData', async(req, res) => {
+  try {
+
+    const { id,nameDrug, dose, doseType,qty,qtyType,pricePerQty,stock } = req.body;
+
+    await Drug.updateOne({id:id},{$set:req.body}) 
+     res.json({ message: 'Drug update successfully'});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'An error occurred during user creation.' });
+  }
+
+})
+
 module.exports = addDrug;
 

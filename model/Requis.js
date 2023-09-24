@@ -4,6 +4,7 @@ const listDrugSchema = mongoose.Schema({
     drugId: { type: String, required: true},
     drugName:{type:String,require:true},
     reqStock :{ type: Number, required: true},
+    availableStock: {type:Number,required:true}
 });
 
  const requisSchema = mongoose.Schema(

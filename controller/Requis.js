@@ -28,7 +28,8 @@ dataRequis.post('/addRequis', async(req, res) => {
         const resData= {
             drugId:drug[0].id,
             drugName:drug[0].nameDrug + ' ' + drug[0].dose +' '+drug[0].doseType ,
-            reqStock:st
+            reqStock:st,
+            availableStock:drug[0].stock
         }
         listDrug.push(resData)
     }

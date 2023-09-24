@@ -16,7 +16,7 @@ dataCart.post('/getCart', async(req, res) => {
             id:data[i].id,
             userId:data[i].userId,
             drugId:data[i].drugId,
-            nameDrug:drug[0].nameDrug,
+            nameDrug:drug[0].nameDrug +' '+ drug[0].dose +' '+ drug[0].doseType,
             stock:data[i].stock,
             balanceStock:drug[0].stock,
             lastStock:drug[0].stock-data[i].stock
