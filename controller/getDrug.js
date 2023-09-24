@@ -9,6 +9,9 @@ getDrug.post('/getDrug', async(req, res) => {
   try {
 
     const data = await Drug.find().sort({ id: 1 }).exec();
+    for(let i = 0 ;i<data.length;i++){
+      data[i].nameDrug = data[i].nameDrug+' '+data[i].dose+' '+data[i].doseType
+    }
      res.json(data);
   } catch (error) {
     console.log(error);
@@ -101,6 +104,25 @@ getDrug.post('/getDrugToEdit', async(req, res) => {
     const drugId = req.body.drugId
     
     const data = await Drug.find({id:drugId}).exec();
+     res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'An error occurred during user creation.' });
+  }
+
+});
+
+getDrug.post('/getDrugDose', async(req, res) => {
+  try {
+
+    // const data = await Drug.find().select('dose').exec();
+    const data = await Drug.aggregate([
+      {
+        $group: {
+          _id: '$doseType', 
+        }
+      } 
+    ]);
      res.json(data);
   } catch (error) {
     console.log(error);
