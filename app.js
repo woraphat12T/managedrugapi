@@ -13,11 +13,14 @@ const requisition = require('./route/requisition')
 const receipt = require('./route/receipt')
 
 
+const user_boq = require('./route/boq/user')
 
 app.use('/drug',user)
 app.use('/drug',drug)
 app.use('/drug',requisition)
 app.use('/drug',receipt)
+
+app.use('/boq',user_boq)
 
 // require('./cronjob/main');
 
